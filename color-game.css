@@ -8,7 +8,6 @@ h1{
 
 .square{
     width: 30%;
-    background-color: purple;
     padding-bottom: 30%;
     float: left;
     margin: 1.66%;
@@ -17,4 +16,8 @@ h1{
 #container {
     max-width: 600px;
     margin: 0 auto;
+}
+
+#messageContainer{
+    background-color: white;
 }

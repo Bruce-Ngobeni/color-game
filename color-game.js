@@ -9,7 +9,8 @@ const colors = [
 
 const squares = document.querySelectorAll(".square");
 const colorDisplay = document.getElementById("colorDisplay");
-const h1Element = document.querySelector("h1")
+const h1Element = document.querySelector("h1");
+const message = document.querySelector("#message");
 
 let winningColor = colors[3];
 colorDisplay.textContent = winningColor;
@@ -23,10 +24,17 @@ for (let i = 0; i < colors.length; i++) {
 
         if(clickedColor === winningColor){
             h1Element.style.color = winningColor;
-            alert("You won!")
+            message.textContent = "Correct!"
             
         }else{
-            alert("You suck!")
+            message.textContent = "Try again!";
+            this.style.backgroundColor = "black";
         }
     })
+}
+
+const chageColors = (color) => {
+    squares.forEach((square) => {
+        square.style.backgroundColor = color;
+    });
 }
