@@ -4,6 +4,8 @@ const colorDisplay = document.getElementById("colorDisplay");
 const h1Element = document.querySelector("h1");
 const message = document.querySelector("#message");
 const resetButton = document.querySelector('#resetButton');
+const easyButton = document.querySelector('#easyButton');
+const hardButton = document.querySelector('#hardButton');
 
 
 /**
@@ -80,6 +82,20 @@ resetButton.addEventListener('click', function () {
     squares[i].style.backgroundColor = colors[i];
   }
 });
+
+
+//easyButton
+easyButton.addEventListener('click', function(){
+  this.classList.add("selected");
+  hardButton.classList.remove("selected");
+})
+
+
+//hardButton
+hardButton.addEventListener('click', function(){
+  this.classList.add("selected");
+  easyButton.classList.remove("selected");
+})
 
 
 // Add click event listeners to each square
