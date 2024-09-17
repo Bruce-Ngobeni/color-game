@@ -17,6 +17,7 @@ button{
     color: steelblue;
     letter-spacing: 1px;
     transition: all 0.5s;
+    outline: none;
 }
 
 button:hover{
@@ -42,6 +43,10 @@ h1{
     padding-bottom: 30%;
     float: left;
     margin: 1.66%;
+    border-radius: 15%;
+    transition: background 0.5s;
+    -webkit-transition: background 0.5s;
+    -moz-transition: background 0.5s;
 }
 
 #colorDisplay{
@@ -50,7 +55,7 @@ h1{
 
 #container {
     max-width: 600px;
-    margin: 0 auto;
+    margin: 20px auto;
 }
 
 #stripe{
@@ -63,4 +68,13 @@ h1{
     background-color: steelblue;
     margin: 0;
     color: white;
+}
+
+#message{
+    display: inline-block;
+    min-width: 20%;
+    color: red;
+    transition: all 0.5s;
+    font-size: 20px;
+    font-weight: 900;
 }
