@@ -8,6 +8,7 @@ const easyButton = document.querySelector('#easyButton');
 const hardButton = document.querySelector('#hardButton');
 
 
+
 /**
  * Generates a random RGB color.
  * @returns {string} The random RGB color as a string, e.g., 'rgb(255, 0, 0)'.
@@ -23,12 +24,12 @@ const generateRandomColor = () => {
 
 /**
  * Generates an array of random RGB colors.
- * @param {number} num - The number of random colors to generate.
+ * @param {number} numSquares - The number of random colors to generate.
  * @returns {Array} An array of randomly generated colors.
  */
-const generateRandomColors = (num) => {
+const generateRandomColors = (numSquares) => {
   let randomColors = [];
-  for (let i = 0; i < num; i++) {
+  for (let i = 0; i < numSquares; i++) {
     randomColors.push(generateRandomColor());
   }
   return randomColors;
@@ -36,16 +37,17 @@ const generateRandomColors = (num) => {
 
 
 // Set the number of squares (colors) in the game
-let num = 6;
+let numSquares = 3;
+
 // Generate an initial set of random colors
-let colors = generateRandomColors(num);
+let colors = generateRandomColors(numSquares);
 
 
 /**
  * Randomly selects a color from the colors array to be the winning color.
  * @returns {string} The randomly selected winning color.
  */
-const pickColor = () => colors[Math.floor(Math.random() * num)];
+const pickColor = () => colors[Math.floor(Math.random() * numSquares)];
 
 
 // Pick an initial winning color and display it
@@ -58,7 +60,7 @@ colorDisplay.textContent = winningColor;
  * @param {string} color - The color to apply to all squares.
  */
 const changeColors = (color) => {
-  for (let i = 0; i < num; i++) {
+  for (let i = 0; i < numSquares; i++) {
     squares[i].style.backgroundColor = color;
   }
 };
@@ -71,7 +73,7 @@ const changeColors = (color) => {
 resetButton.addEventListener('click', function () {
   console.log("Reset button clicked");
   // Generate new colors and pick a new winning color
-  colors = generateRandomColors(num);
+  colors = generateRandomColors(numSquares);
   winningColor = pickColor();
   colorDisplay.textContent = winningColor;
   h1Element.style.color = "white";
@@ -84,10 +86,23 @@ resetButton.addEventListener('click', function () {
 });
 
 
+
 //easyButton
 easyButton.addEventListener('click', function(){
   this.classList.add("selected");
   hardButton.classList.remove("selected");
+  numSquares = 3;
+  colors = generateRandomColors(numSquares);
+  winningColor = pickColor();
+  colorDisplay.textContent = winningColor;
+
+  for(let i = 0; i < squares.length; i++){
+    if (colors[i]) {
+      squares[i].style.backgroundColor =  colors[i];
+    } else {
+      squares[i].style.backgroundColor = "black";
+    }
+  }
 })
 
 
@@ -95,8 +110,16 @@ easyButton.addEventListener('click', function(){
 hardButton.addEventListener('click', function(){
   this.classList.add("selected");
   easyButton.classList.remove("selected");
-})
+  numSquares = 6;
+  colors = generateRandomColors(numSquares);
+  winningColor = pickColor();
+  colorDisplay.textContent = winningColor;
 
+  for(let i = 0; i < squares.length; i++){
+    squares[i].style.backgroundColor =  colors[i];
+    // squares[i].style.display = "none";
+  }
+})
 
 // Add click event listeners to each square
 for (let i = 0; i < colors.length; i++) {
