@@ -37,7 +37,7 @@ const generateRandomColors = (numSquares) => {
 
 
 // Set the number of squares (colors) in the game
-let numSquares = 3;
+let numSquares = 6;
 
 // Generate an initial set of random colors
 let colors = generateRandomColors(numSquares);
@@ -95,6 +95,7 @@ easyButton.addEventListener('click', function(){
   colors = generateRandomColors(numSquares);
   winningColor = pickColor();
   colorDisplay.textContent = winningColor;
+  h1Element.style.color = "white"
 
   for(let i = 0; i < squares.length; i++){
     if (colors[i]) {
@@ -114,6 +115,7 @@ hardButton.addEventListener('click', function(){
   colors = generateRandomColors(numSquares);
   winningColor = pickColor();
   colorDisplay.textContent = winningColor;
+  h1Element.style.color = "white"
 
   for(let i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor =  colors[i];
